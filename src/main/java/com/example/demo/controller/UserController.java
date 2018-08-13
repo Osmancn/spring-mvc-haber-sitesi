@@ -9,7 +9,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -87,5 +90,35 @@ public class UserController {
         return "/header";
     }
 
+    @RequestMapping(value = {"/liste"}, method = RequestMethod.GET)
+    public ModelAndView listAlien() {
 
+        ModelAndView model = new ModelAndView("/liste");
+
+        List<User> userList = (List<User>) userRepository.findAll();
+
+        model.addObject("liste", userList);
+        return model;
+    }
+
+    @RequestMapping(value = {"/profil/{id}/delete"})
+    public String deleteUser(@PathVariable("id") int id, Model model) {
+
+        userRepository.deleteById(id);
+        List<User> userList = new ArrayList<>();
+        userList = (List<User>) userRepository.findAll();
+        model.addAttribute("liste", userList);
+        return "/liste";
+    }
+
+    @RequestMapping(value = {"/profil/{id}/role/{role}"})
+    public String RolDegis(@PathVariable("id") int id,
+                           @PathVariable("role") String role, Model model) {
+
+        userRepository.findUserById(id).setRole(role);
+        List<User> userList = new ArrayList<>();
+        userList = (List<User>) userRepository.findAll();
+        model.addAttribute("liste", userList);
+        return "/liste";
+    }
 }
