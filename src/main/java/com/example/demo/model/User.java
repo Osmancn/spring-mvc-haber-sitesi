@@ -17,8 +17,15 @@ public class User {
     private String actCode;
     private String sifre;
     private boolean valid = false;
+    private String role;
 
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getEmail() { return email; }
 

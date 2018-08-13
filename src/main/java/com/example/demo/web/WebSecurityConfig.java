@@ -26,23 +26,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/resources/**").permitAll()
-                .and()
+                    .antMatchers("/resources/**").permitAll()
+                    .and()
                 .authorizeRequests()
-                .antMatchers("/KayitOl").permitAll()
-                .antMatchers("/hosgeldin/**")
-                .access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER') or hasRole('ROLE_GUEST')")
-                .antMatchers("/h2-console/**").permitAll()
-                .anyRequest().authenticated()
+                    .antMatchers("/KayitOl").permitAll()
+                    .antMatchers("/hosgeldin/**")
+                        .access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER') or hasRole('ROLE_GUEST')")
+                    .antMatchers("/h2-console/**").permitAll()
+                    .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .usernameParameter("email")
-                .passwordParameter("sifre")
-                .permitAll()
-                .and()
+                    .loginPage("/login")
+                    .usernameParameter("email")
+                    .passwordParameter("sifre")
+                    .permitAll()
+                    .and()
                 .logout()
-                .permitAll();
+                    .permitAll();
 
         http.csrf().disable();
         http.headers().frameOptions().disable();

@@ -26,17 +26,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findUserByEmail(email);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-
-        if(user.isValid()){
-            grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_USER"  ));
-        }
-        else{
-            grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_GUEST" ));
-        }
-        if(user.getEmail().equalsIgnoreCase("osmancan6767@gmail.com")){
+        if(user.getRole().equalsIgnoreCase("ADMIN"))
+        {
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         }
-        // return kısmını öğren
+        else if(user.getRole().equalsIgnoreCase("USER")){
+            grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_USER"  ));
+        }
+        else if(user.getRole().equalsIgnoreCase("GUEST")){
+            grantedAuthorities.add(new SimpleGrantedAuthority( "ROLE_GUEST" ));
+        }
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getSifre(), grantedAuthorities);
     }
 }
