@@ -8,43 +8,42 @@ Licence: Free to use under our free template licence terms
 Licence URI: http://www.os-templates.com/template-terms
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
-<%@ include file="header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="header.jsp"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <head>
-    <title>Newserific</title>
+    <title>Haberler</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/layout/styles/layout.css" type="text/css">
 </head>
 <body id="top">
 <div class="wrapper col4">
     <div id="container">
-        <div id="content">
-            <div id="featured_post"><img src="images/demo/620x270.gif" alt="">
-                <p>This is a W3C standards compliant free website template from <a href="http://www.os-templates.com/">OS Templates</a>.</p>
-                <p>This template is distributed using a <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>, which allows you to use and modify the template for both personal and commercial use when you keep the provided credit links in the footer. For more CSS templates visit <a href="http://www.os-templates.com/">Free Website Templates</a>.</p>
+        <div >
+            <div id="featured_post"><img src="${haberList[0].files[0].fileURL}" alt="" height="350" width="880">
+                <p>${haberList[0].title}</p>
+                <p>${haberList[0].description}</p>
+                <p class="readmore"><a href="#">Devamını Oku »</a></p>
             </div>
-            <div id="hpage_latest">
-                <ul>
-                    <li><img src="images/demo/190x80.gif" alt="">
-                        <p>Nullamlacus dui ipsum conseqlo borttis non euisque morbipen a sdapibulum orna.</p>
-                        <p>Urnau ltrices quis curabitur pha sellent esque congue magnisve stib ulum quismodo nulla et.</p>
-                        <p class="readmore"><a href="#">Continue Reading »</a></p>
-                    </li>
-                    <li><img src="images/demo/190x80.gif" alt="">
-                        <p>Nullamlacus dui ipsum conseqlo borttis non euisque morbipen a sdapibulum orna.</p>
-                        <p>Urnau ltrices quis curabitur pha sellent esque congue magnisve stib ulum quismodo nulla et.</p>
-                        <p class="readmore"><a href="#">Continue Reading »</a></p>
-                    </li>
-                    <li class="last"><img src="images/demo/190x80.gif" alt="">
-                        <p>Nullamlacus dui ipsum conseqlo borttis non euisque morbipen a sdapibulum orna.</p>
-                        <p>Urnau ltrices quis curabitur pha sellent esque congue magnisve stib ulum quismodo nulla et.</p>
-                        <p class="readmore"><a href="#">Continue Reading »</a></p>
-                    </li>
-                </ul>
-                <br class="clear">
-            </div>
+
+            <c:forEach var = "i" begin = "0" end = "10">
+                <div id="hpage_latest">
+                    <ul>
+                        <c:forEach var = "j" begin = "1" end = "4">
+
+                            <li><img src="${haberList[(i*4)+j].files[0].fileURL}" alt="img bulunamadı" height="80" width="190">
+                                <p>${haberList[(i*4)+j].title}</p>
+                                <p>${haberList[(i*4)+j].title}</p>
+                                <p class="readmore"><a href="#">Devamını Oku »</a></p>
+                            </li>
+
+                        </c:forEach>
+                    </ul>
+                    <br class="clear"><br/>
+                </div>
+            </c:forEach>
+
         </div>
 
         <br class="clear">

@@ -128,7 +128,9 @@ public class UserController {
         return "/liste";
     }
     @RequestMapping(value="/haber",method = RequestMethod.GET)
-    public String haber() throws IOException {
+    public ModelAndView haber() throws IOException {
+
+        ModelAndView model = new ModelAndView("/haber");
 
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -142,7 +144,9 @@ public class UserController {
         List<Articles> articles = response.getBody();
         System.out.println(articles.size());
 
-        return "/haber";
+        model.addObject("haberList", articles);
+
+        return model;
     }
 
 
