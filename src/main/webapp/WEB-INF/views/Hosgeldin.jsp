@@ -28,8 +28,9 @@
 </head>
 
 <body>
-<div class="container">
 
+<div class="wrapper col4">
+    </br></br></br>
     <form id="logoutForm" method="POST" action="${contextPath}/logout">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
@@ -37,10 +38,18 @@
     <h2 align="center"> Hosgeldin ${user.ad} </h2>
     <br/><br/>
     <h2 class="text-center" align="center">
-        <a onclick="document.forms['logoutForm'].submit()"><span class="glyphicon glyphicon-log-out"></span>Çıkış Yap</a><h2>
-
-
+        <a onclick="document.forms['logoutForm'].submit()"><span class="glyphicon glyphicon-log-out"></span>Çıkış Yap</a></h2>
+    </br></br></br></br></br></br></br></br></br></br></br></br>
+    </br></br></br></br></br></br></br></br></br></br></br></br>
+    <br class="clear">
 </div>
 
+<div class="wrapper col7">
+    <div id="copyright">
+        <p class="fl_left">Telif Hakkı © 2014 - Bütün Hakkı Saklıdır - İND Bilişim</p>
+        <p class="fl_right">Osmancan Güven</p>
+        <br class="clear">
+    </div>
+</div>
 </body>
 </html>

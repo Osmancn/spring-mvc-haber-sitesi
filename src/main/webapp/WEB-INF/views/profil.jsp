@@ -12,18 +12,25 @@
 <head>
     <title>Profil</title>
 </head>
-<body>
-<table align="center">
-
-    <div align="center">
-        <br/>ID= ${user.getid()}<br/>
-        <br/>AD= ${user.ad}<br/>
-        <br/>SOYAD= ${user.soyad}<br/>
-        <br/>E-MAIL= ${user.email}<br/>
+<body class="wrapper col4">
+    </br></br></br>
+    <table align="center">
+        <div align="center">
+            <br/>ID= ${user.getid()}<br/>
+            <br/>AD= ${user.ad}<br/>
+            <br/>SOYAD= ${user.soyad}<br/>
+            <br/>E-MAIL= ${user.email}<br/>
+        </div>
+    </table>
+    </br></br></br></br></br></br></br></br></br></br></br></br>
+    </br></br></br></br></br></br></br></br></br></br></br></br>
+    <br class="clear">
+    <div class="wrapper col7">
+        <div id="copyright">
+            <p class="fl_left">Telif Hakkı © 2014 - Bütün Hakkı Saklıdır - İND Bilişim</p>
+            <p class="fl_right">Osmancan Güven</p>
+            <br class="clear">
+        </div>
     </div>
-
-
-</table>
-
 </body>
 </html>

@@ -27,30 +27,34 @@ public class UserServiceImpl implements IUserService {
         user.setSifre(encodePass);
 
         if(user.getEmail().equalsIgnoreCase("osmancan6767@gmail.com"))
+        {
+            user.setValid(true);
             user.setRole("ADMIN");
-        else
+            userRepository.save(user);
+        }
+        else {
             user.setRole("GUEST");
+            userRepository.save(user);
+            // eposta doğrulama işlemleri yapılacak
+            String emailID = user.getEmail();
 
-        userRepository.save(user);
-        // eposta doğrulama işlemleri yapılacak
-        String emailID = user.getEmail();
-
-        Properties props = System.getProperties();
-        props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
-        props.put("mail.smtp.port", "587"); //TLS Port
-        props.put("mail.smtp.auth", "true"); //enable authentication
-        props.put("mail.smtp.starttls.enable", "true");
+            Properties props = System.getProperties();
+            props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+            props.put("mail.smtp.port", "587"); //TLS Port
+            props.put("mail.smtp.auth", "true"); //enable authentication
+            props.put("mail.smtp.starttls.enable", "true");
 
 
-        javax.mail.Authenticator auth = new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("ruka.testind@gmail.com", "163311022");
-            }
-        };
-        Session session = Session.getInstance(props, auth);
+            javax.mail.Authenticator auth = new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication("ruka.testind@gmail.com", "163311022");
+                }
+            };
+            Session session = Session.getInstance(props, auth);
 
-        EmailUtil.sendEmail(session, emailID, "Aktivasyon Kodu",
-                "Hesabınızın aktifleştirilmesi için bu linke " +
-                        "tıklayınız:http://www.localhost:1111/orders?actCode="+user.getActCode());
+            EmailUtil.sendEmail(session, emailID, "Aktivasyon Kodu",
+                    "Hesabınızın aktifleştirilmesi için bu linke " +
+                            "tıklayınız:http://www.localhost:1111/orders?actCode=" + user.getActCode());
+        }
     }
 }

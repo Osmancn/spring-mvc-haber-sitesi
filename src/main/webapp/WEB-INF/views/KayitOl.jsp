@@ -21,12 +21,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body >
 
-<div class="container">
+<div class="wrapper col4">
+    </br></br>
     <h2 align="center"> Kayıt Ol</h2>
     <form method="post" action="/KayitOl" modelAttribute="userForm" align="center" enctype="multipart/form-data">
-
         <div class="form-group" align="center">
             <div class="form-group">
                 </br>  <input type="text" name="ad" class="form-control" placeholder="AD"
@@ -48,7 +48,15 @@
 
         </br><br><input type="submit" class="btn btn-primary"><br><br>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <br class="clear">
     </form>
+</div>
+<div class="wrapper col7">
+    <div id="copyright">
+        <p class="fl_left">Telif Hakkı © 2014 - Bütün Hakkı Saklıdır - İND Bilişim</p>
+        <p class="fl_right">Osmancan Güven</p>
+        <br class="clear">
+    </div>
 </div>
 
 </body>

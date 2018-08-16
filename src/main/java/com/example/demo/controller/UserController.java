@@ -1,17 +1,24 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Articles;
 import com.example.demo.model.User;
 import com.example.demo.repository.IUserRepository;
 import com.example.demo.service.UserServiceImpl;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -92,7 +99,6 @@ public class UserController {
 
     @RequestMapping(value = {"/liste"}, method = RequestMethod.GET)
     public ModelAndView listAlien() {
-
         ModelAndView model = new ModelAndView("/liste");
 
         List<User> userList = (List<User>) userRepository.findAll();
@@ -121,4 +127,25 @@ public class UserController {
         model.addAttribute("liste", userList);
         return "/liste";
     }
+    @RequestMapping(value="/haber",method = RequestMethod.GET)
+    public String haber() throws IOException {
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("APIKEY", "0b6206c2f74e4cbd831128ca9ba132d8");
+        String url = "https://api.hurriyet.com.tr/v1/articles";///40928802
+
+        HttpEntity entity = new HttpEntity(headers);
+
+        ResponseEntity<List<Articles>> response = restTemplate.exchange(
+                url, HttpMethod.GET, entity, new ParameterizedTypeReference<List<Articles>>(){});
+        List<Articles> articles = response.getBody();
+        System.out.println(articles.size());
+
+        return "/haber";
+    }
+
+
+
+
 }

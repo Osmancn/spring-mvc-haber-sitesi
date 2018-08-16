@@ -34,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/profil/**").permitAll()
                     .antMatchers("/hosgeldin/**")
                         .access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER') or hasRole('ROLE_GUEST')")
+                    .antMatchers("/haber").permitAll()
                     .antMatchers("/h2-console/**").permitAll()
                     .anyRequest().authenticated()
                 .and()

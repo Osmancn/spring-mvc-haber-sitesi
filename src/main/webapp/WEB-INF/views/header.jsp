@@ -13,46 +13,46 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/layout/styles/layout.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body id="top">
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+<div class="wrapper col2">
+    <div id="topbar">
+        <div id="topnav">
 
+            <ul >
+                <c:choose>
+                    <c:when test="${pageContext.request.userPrincipal.name == null}">
+                        <li><a href="${contextPath}/Hosgeldin">Ana Sayfa</a></li>
+                        <li><a href="${contextPath}/UyeGiris">Uye Giriş</a></li>
+                        <li><a href="${contextPath}/KayitOl">Kayıt Ol</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><a href="${contextPath}/Hosgeldin">Ana Sayfa</a></li>
+                        <li><a href="${contextPath}/Profil">Profil</a></li>
+                    </c:otherwise>
+                </c:choose>
+            </ul>
+        </div>
+        <div id="search">
+            <ul >
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                    <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </form>
 
-        <ul class="nav navbar-nav">
-            <c:choose>
-                <c:when test="${pageContext.request.userPrincipal.name == null}">
-                    <li><a href="${contextPath}/Hosgeldin">Ana Sayfa</a></li>
-                    <li><a href="${contextPath}/UyeGiris">Uye Giriş</a></li>
-                    <li><a href="${contextPath}/KayitOl">Kayıt Ol</a></li>
-                </c:when>
-                <c:otherwise>
-                    <li><a href="${contextPath}/Hosgeldin">Ana Sayfa</a></li>
-                    <li><a href="${contextPath}/Profil">Profil</a></li>
-                </c:otherwise>
-            </c:choose>
-
-
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-            <c:if test="${pageContext.request.userPrincipal.name != null}">
-                <form id="logoutForm" method="POST" action="${contextPath}/logout">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                </form>
-
-                <a onclick="document.forms['logoutForm'].submit()"><span class="glyphicon glyphicon-log-out"></span>Çıkış Yap</a>
-            </c:if>
-        </ul>
-
+                    <a onclick="document.forms['logoutForm'].submit()"><span class="glyphicon glyphicon-log-out"></span>Çıkış Yap</a>
+                </c:if>
+            </ul>
+        </div>
+        <br class="clear">
     </div>
-</nav>
-
-
+</div>
 </body>
 </html>
