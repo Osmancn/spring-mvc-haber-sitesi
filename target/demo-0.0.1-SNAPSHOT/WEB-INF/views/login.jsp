@@ -20,8 +20,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body class="wrapper col4">
-<div class="wrapper col4">
+<body class="wrapper col7">
+<div class="wrapper col7">
     </br></br></br>
     <form method="POST" align="center" action="${contextPath}/login" class="form-signin">
         <h2 class="form-heading" style="font-family: Georgia">GİRİŞ YAP</h2>
@@ -35,7 +35,7 @@
                 </br><button class="btn btn-primary btn-block" type="submit" style="width: 250px" style="height:250px">Giriş Yap</button></br>
                 </br><button class="btn btn-info" style="width: 250px" style="height:250px"   onclick="this.disabled= true; location.href='${contextPath}/KayitOl'">Kayıt Olmak İçin Tıklayınız...</button>
 
-                </br></br></br></br></br></br>
+                </br></br></br></br></br>
                 <br class="clear">
             </div>
         </div>
@@ -44,6 +44,7 @@
 
 </div>
 <div class="wrapper col7">
+
     <div id="copyright">
         <p class="fl_left">Telif Hakkı © 2014 - Bütün Hakkı Saklıdır - İND Bilişim</p>
         <p class="fl_right">Osmancan Güven</p>

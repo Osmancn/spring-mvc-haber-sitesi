@@ -127,10 +127,30 @@ public class UserController {
         model.addAttribute("liste", userList);
         return "/liste";
     }
-    @RequestMapping(value="/haber",method = RequestMethod.GET)
+
+    @RequestMapping(value="/haber/{id}")
+    public String haber(@PathVariable("id") String id,Model model)
+    {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("APIKEY", "0b6206c2f74e4cbd831128ca9ba132d8");
+        String url = "https://api.hurriyet.com.tr/v1/articles/"+id;///40928802
+
+        HttpEntity entity = new HttpEntity(headers);
+
+        ResponseEntity<Articles> response = restTemplate.exchange(
+                url, HttpMethod.GET, entity, new ParameterizedTypeReference<Articles>(){});
+
+        Articles articles = new Articles();
+        articles= response.getBody();
+        model.addAttribute("haber",articles);
+
+        return "/haber";
+    }
+    @RequestMapping(value="/haberler",method = RequestMethod.GET)
     public ModelAndView haber() throws IOException {
 
-        ModelAndView model = new ModelAndView("/haber");
+        ModelAndView model = new ModelAndView("/haberler");
 
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();

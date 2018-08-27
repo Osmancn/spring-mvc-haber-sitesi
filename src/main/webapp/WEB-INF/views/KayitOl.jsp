@@ -21,9 +21,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body >
+<body class="wrapper col7">
 
-<div class="wrapper col4">
+<div class="wrapper col7">
     </br></br>
     <h2 align="center"> Kayıt Ol</h2>
     <form method="post" action="/KayitOl" modelAttribute="userForm" align="center" enctype="multipart/form-data">
@@ -48,8 +48,9 @@
 
         </br><br><input type="submit" class="btn btn-primary"><br><br>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <br class="clear">
     </form>
+    </br>
+    <br class="clear">
 </div>
 <div class="wrapper col7">
     <div id="copyright">

@@ -29,12 +29,12 @@
             <ul >
                 <c:choose>
                     <c:when test="${pageContext.request.userPrincipal.name == null}">
-                        <li><a href="${contextPath}/Hosgeldin">Ana Sayfa</a></li>
+                        <li><a href="${contextPath}/haberler">Ana Sayfa</a></li>
                         <li><a href="${contextPath}/UyeGiris">Uye Giriş</a></li>
                         <li><a href="${contextPath}/KayitOl">Kayıt Ol</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="${contextPath}/Hosgeldin">Ana Sayfa</a></li>
+                        <li><a href="${contextPath}/haberler">Ana Sayfa</a></li>
                         <li><a href="${contextPath}/Profil">Profil</a></li>
                     </c:otherwise>
                 </c:choose>
